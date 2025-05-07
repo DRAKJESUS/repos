@@ -18,6 +18,11 @@ end_date = datetime.strptime(fecha_fin, '%Y-%m-%d')
 # Cambiar al directorio del repositorio
 os.chdir(repositorio)
 
+# Inicializar el repositorio si no existe
+if not os.path.exists(os.path.join(repositorio, '.git')):
+    subprocess.run(['git', 'init'])
+    print("Repositorio Git inicializado.")
+
 # Crear el archivo si no existe
 if not os.path.exists(archivo):
     with open(archivo, 'w') as f:
